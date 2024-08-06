@@ -1,5 +1,5 @@
 # Use the PHP-FPM image as the base
-FROM php:8.2.19-fpm
+FROM php:8.1-fpm
 
 # Install system dependencies and extensions
 RUN apt-get update && apt-get install -y \
@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libonig-dev \
+    curl \
     libfreetype6-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd bcmath xsl soap intl mbstring pdo_mysql zip sockets sodium
